@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "poketrivia",
+  "version": "${version}",
+  "name": "PokeTrivia",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/xander/PokeTrivia"
+  },
+  "license": "All-Rights-Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "network.roanoke.poketrivia.PokeTrivia"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.10",
+    "fabric": "*",
+    "minecraft": "1.19.2"
+  }
+}

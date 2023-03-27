@@ -1,13 +1,15 @@
-package network.roanoke.poketrivia;
+package network.roanoke.poketrivia.Trivia;
 
 import com.google.gson.*;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import network.roanoke.poketrivia.PokeTrivia;
+import network.roanoke.poketrivia.Reward.RewardManager;
+import network.roanoke.poketrivia.Trivia.TriviaQuestion;
 
 import java.io.File;
 import java.io.FileReader;

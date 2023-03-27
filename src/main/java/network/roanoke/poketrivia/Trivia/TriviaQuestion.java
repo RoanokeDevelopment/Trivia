@@ -1,4 +1,6 @@
-package network.roanoke.poketrivia;
+package network.roanoke.poketrivia.Trivia;
+
+import network.roanoke.poketrivia.PokeTrivia;
 
 import java.util.List;
 

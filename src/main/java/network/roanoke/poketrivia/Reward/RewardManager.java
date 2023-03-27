@@ -1,13 +1,13 @@
-package network.roanoke.poketrivia;
+package network.roanoke.poketrivia.Reward;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.server.network.ServerPlayerEntity;
+import network.roanoke.poketrivia.Trivia.TriviaQuestion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class RewardManager {
 

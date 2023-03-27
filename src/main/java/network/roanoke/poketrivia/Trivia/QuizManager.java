@@ -75,7 +75,7 @@ public class QuizManager {
                 JsonArray answersArr = questionObj.get("answers").getAsJsonArray();
                 List<String> answers = new ArrayList<>();
                 for (JsonElement answerElem : answersArr) {
-                    answers.add(answerElem.getAsString());
+                    answers.add(answerElem.getAsString().toLowerCase());
                 }
 
                 // Create the TriviaQuestion object and add it to the list
@@ -104,9 +104,9 @@ public class QuizManager {
     }
 
     public void processQuizWinner(ServerPlayerEntity player, MinecraftServer server) {
-        MutableText toSend = player.getDisplayName().copy().formatted(Formatting.GOLD)
-                .append(Text.literal(" got the answer right ").formatted(Formatting.GREEN)
-                        .append(Text.literal(" in " + ((System.currentTimeMillis() - questionTime) / 1000) + " seconds!").formatted(Formatting.GOLD)));
+        MutableText toSend = player.getDisplayName().copy()
+                .append(Text.literal(" got the answer right in ")
+                        .append(Text.literal(((System.currentTimeMillis() - questionTime) / 1000) + " seconds!").formatted(Formatting.GOLD)));
         server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(toSend));
         rewardManager.giveReward(player, currentQuestion);
         currentQuestion = null;

@@ -3,6 +3,7 @@ package network.roanoke.poketrivia;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
+import network.roanoke.poketrivia.Commands.ReloadQuiz;
 import network.roanoke.poketrivia.Commands.StartQuiz;
 import network.roanoke.poketrivia.Trivia.QuizManager;
 import org.slf4j.Logger;
@@ -25,6 +26,7 @@ public class PokeTrivia implements ModInitializer {
         instance = this;
 
         new StartQuiz();
+        new ReloadQuiz();
 
         ServerTickEvents.START_SERVER_TICK.register(server -> {
             if (!quiz.quizInProgress() && (server.getPlayerManager().getPlayerList().size() > 0)) {
@@ -42,7 +44,7 @@ public class PokeTrivia implements ModInitializer {
             if (quiz.quizInProgress()) {
                 LOGGER.info("Quiz is in progress....");
                 LOGGER.info(message.getContent().getString());
-                if (quiz.isRightAnswer(message.getContent().getString())) {
+                if (quiz.isRightAnswer(message.getContent().getString().toLowerCase())) {
                     LOGGER.info("Chat was correct answer");
                     quiz.processQuizWinner(sender, sender.server);
                 }

@@ -41,7 +41,7 @@ public class QuizManager {
         if (!configFile.exists()) {
             // create the file
             try {
-                configFile.createNewFile();
+                configFile.mkdirs();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -53,7 +53,7 @@ public class QuizManager {
         if (!questionsFile.exists()) {
             questionsFile.createNewFile();
             // create the file
-            InputStream in = PokeTrivia.class.getResourceAsStream("/resources/questions.json");
+            InputStream in = PokeTrivia.class.getResourceAsStream("/questions.json");
 
             // Create a FileOutputStream to write the file to the directory
             OutputStream out = new FileOutputStream(questionsFile);
@@ -72,7 +72,7 @@ public class QuizManager {
         if (!rewardsFile.exists()) {
             rewardsFile.createNewFile();
 
-            InputStream in = PokeTrivia.class.getResourceAsStream("/resources/rewards.json");
+            InputStream in = PokeTrivia.class.getResourceAsStream("/rewards.json");
 
             // Create a FileOutputStream to write the file to the directory
             OutputStream out = new FileOutputStream(rewardsFile);
@@ -182,7 +182,7 @@ public class QuizManager {
         if (reward == null) {
             PokeTrivia.LOGGER.error("Failed to get reward for " + player.getName() + " for question " + currentQuestion.question);
         } else {
-            toSend.append(Text.literal(" and they won a " + reward.itemDisplayName + "!").formatted(Formatting.WHITE));
+            toSend.append(Text.literal(" They won a " + reward.itemDisplayName + "!").formatted(Formatting.WHITE));
         }
 
         server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(toSend));

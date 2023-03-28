@@ -11,8 +11,7 @@ import network.roanoke.poketrivia.PokeTrivia;
 import network.roanoke.poketrivia.Reward.Reward;
 import network.roanoke.poketrivia.Reward.RewardManager;
 
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +24,19 @@ public class QuizManager {
     private RewardManager rewardManager = null;
 
     public QuizManager() {
+        try {
+            ensureFilesExist();
+        } catch (IOException e) {
+            e.printStackTrace();
+            PokeTrivia.LOGGER.error("Failed to copy built in default files to Config/Trivia");
+        }
         loadQuestions();
+        loadRewards();
     }
 
-    // Load the questions from the config file
-    public void loadQuestions() {
+    public void ensureFilesExist() throws IOException {
         // get the default fabric api config directory and then create a new file called "poketrivia.json"
-        Path configPath = FabricLoader.getInstance().getConfigDir().resolve("poketrivia.json");
-        // create a file from the path if it does not exist
+        Path configPath = FabricLoader.getInstance().getConfigDir().resolve("Trivia");
         File configFile = configPath.toFile();
         if (!configFile.exists()) {
             // create the file
@@ -41,24 +45,70 @@ public class QuizManager {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return;
         }
+        Path questionsPath = FabricLoader.getInstance().getConfigDir().resolve("Trivia/questions.json");
+        Path rewardsPath = FabricLoader.getInstance().getConfigDir().resolve("Trivia/rewards.json");
+        File questionsFile = questionsPath.toFile();
+        File rewardsFile = rewardsPath.toFile();
+        if (!questionsFile.exists()) {
+            questionsFile.createNewFile();
+            // create the file
+            InputStream in = PokeTrivia.class.getResourceAsStream("/resources/questions.json");
+
+            // Create a FileOutputStream to write the file to the directory
+            OutputStream out = new FileOutputStream(questionsFile);
+
+            // Use a buffer to read and write the file in chunks
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = in.read(buffer)) > 0) {
+                out.write(buffer, 0, length);
+            }
+
+            // Close the input and output streams
+            in.close();
+            out.close();
+        }
+        if (!rewardsFile.exists()) {
+            rewardsFile.createNewFile();
+
+            InputStream in = PokeTrivia.class.getResourceAsStream("/resources/rewards.json");
+
+            // Create a FileOutputStream to write the file to the directory
+            OutputStream out = new FileOutputStream(rewardsFile);
+
+            // Use a buffer to read and write the file in chunks
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = in.read(buffer)) > 0) {
+                out.write(buffer, 0, length);
+            }
+
+            // Close the input and output streams
+            in.close();
+            out.close();
+        }
+    }
+
+    // Load the questions from the config file
+    public void loadQuestions() {
+        // get the default fabric api config directory and then create a new file called "poketrivia.json"
+        Path questionsPath = FabricLoader.getInstance().getConfigDir().resolve("Trivia/questions.json");
+        // create a file from the path if it does not exist
+        File questionFile = questionsPath.toFile();
+
 
         // Read the JSON file
         JsonElement root;
         try {
-            root = JsonParser.parseReader(new FileReader(configFile));
+            root = JsonParser.parseReader(new FileReader(questionFile));
         } catch (Exception e) {
             e.printStackTrace();
             return;
         }
 
         // Get the "questions" object
-        JsonObject questionsObj = root.getAsJsonObject().get("questions").getAsJsonObject();
-        PokeTrivia.LOGGER.info("Loading the rewards...");
-        JsonObject rewardsObj = root.getAsJsonObject().get("rewards").getAsJsonObject();
-        rewardManager = new RewardManager(rewardsObj);
-
+        JsonObject questionsObj = root.getAsJsonObject();
         PokeTrivia.LOGGER.info("Loading the questions...");
         // Loop over the difficulty levels
         for (String difficulty : questionsObj.keySet()) {
@@ -83,6 +133,25 @@ public class QuizManager {
                 questionPool.add(question);
             }
         }
+    }
+
+    public void loadRewards() {
+        // get the default fabric api config directory and then create a new file called "poketrivia.json"
+        Path rewardsPath = FabricLoader.getInstance().getConfigDir().resolve("Trivia/rewards.json");
+        // create a file from the path if it does not exist
+        File rewardsFile = rewardsPath.toFile();
+
+        JsonElement root;
+        try {
+            root = JsonParser.parseReader(new FileReader(rewardsFile));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+
+        PokeTrivia.LOGGER.info("Loading the rewards...");
+        JsonObject rewardsObj = root.getAsJsonObject();
+        rewardManager = new RewardManager(rewardsObj);
     }
 
     public Boolean quizInProgress() {

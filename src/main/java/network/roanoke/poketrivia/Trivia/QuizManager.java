@@ -8,8 +8,8 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import network.roanoke.poketrivia.PokeTrivia;
+import network.roanoke.poketrivia.Reward.Reward;
 import network.roanoke.poketrivia.Reward.RewardManager;
-import network.roanoke.poketrivia.Trivia.TriviaQuestion;
 
 import java.io.File;
 import java.io.FileReader;
@@ -104,11 +104,19 @@ public class QuizManager {
     }
 
     public void processQuizWinner(ServerPlayerEntity player, MinecraftServer server) {
+        Reward reward = rewardManager.giveReward(player, currentQuestion);
+
         MutableText toSend = player.getDisplayName().copy()
                 .append(Text.literal(" got the answer right in ")
                         .append(Text.literal(((System.currentTimeMillis() - questionTime) / 1000) + " seconds!").formatted(Formatting.GOLD)));
+
+        if (reward == null) {
+            PokeTrivia.LOGGER.error("Failed to get reward for " + player.getName() + " for question " + currentQuestion.question);
+        } else {
+            toSend.append(Text.literal(" and they won a " + reward.itemDisplayName + "!").formatted(Formatting.WHITE));
+        }
+
         server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(toSend));
-        rewardManager.giveReward(player, currentQuestion);
         currentQuestion = null;
     }
 

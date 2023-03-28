@@ -43,12 +43,14 @@ public class RewardManager {
     }
 
     // give the winner a random reward from the difficulty pool
-    public void giveReward(ServerPlayerEntity player, TriviaQuestion question) {
+    public Reward giveReward(ServerPlayerEntity player, TriviaQuestion question) {
         if (rewardPools.containsKey(question.difficulty)) {
             ArrayList<Reward> rewards = rewardPools.get(question.difficulty);
             Reward reward = rewards.get((int) (Math.random() * rewards.size()));
             player.giveItemStack(reward.itemStack);
+            return reward;
         }
+        return null;
     }
 
 }

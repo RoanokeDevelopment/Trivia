@@ -1,38 +1,558 @@
 {
-  "easy": [
-    {
-      "item_name": "minecraft:dirt",
-      "display_name": "Dirt",
-      "quantity": 1
-    },
-    {
-      "item_name": "minecraft:stone",
-      "display_name": "Stone",
-      "quantity": 1
-    },
-    {
-      "item_name": "minecraft:iron_ingot",
-      "display_name": "Iron Ingot",
-      "quantity": 1
-    },
-    {
-      "item_name": "minecraft:diamond",
-      "display_name": "Diamond",
-      "quantity": 1
-    }
-  ],
-  "medium": [
-    {
-      "item_name": "minecraft:stone",
-      "display_name": "Stone",
-      "quantity": 1
-    }
-  ],
-  "hard": [
-    {
-      "item_name": "minecraft:iron_ingot",
-      "display_name": "Iron Ingot",
-      "quantity": 1
-    }
-  ]
+    "easy": [
+        {
+            "item_name": "cobblemon:dawn_stone",
+            "display_name": "Dawn Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:dusk_stone",
+            "display_name": "Dusk Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:fire_stone",
+            "display_name": "Fire Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:ice_stone",
+            "display_name": "Ice Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:leaf_stone",
+            "display_name": "Leaf Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:moon_stone",
+            "display_name": "Moon Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:shiny_stone",
+            "display_name": "Shiny Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:sun_stone",
+            "display_name": "Sun Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:thunder_stone",
+            "display_name": "Thunder Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:water_stone",
+            "display_name": "Water Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:poke_ball",
+            "display_name": "Poke Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:slate_ball",
+            "display_name": "Slate Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:azure_ball",
+            "display_name": "Azure Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:verdant_ball",
+            "display_name": "Verdant Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:roseate_ball",
+            "display_name": "Roseate Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:citrine_ball",
+            "display_name": "Citrine Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:great_ball",
+            "display_name": "Great Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:ultra_ball",
+            "display_name": "Ultra Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:safari_ball",
+            "display_name": "Safari Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:fast_ball",
+            "display_name": "Fast Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:level_ball",
+            "display_name": "Level Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:lure_ball",
+            "display_name": "Lure Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:heavy_ball",
+            "display_name": "Heavy Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:love_ball",
+            "display_name": "Love Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:friend_ball",
+            "display_name": "Friend Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:moon_ball",
+            "display_name": "Moon Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:sport_ball",
+            "display_name": "Sport Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:net_ball",
+            "display_name": "Net Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:dive_ball",
+            "display_name": "Dive Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:nest_ball",
+            "display_name": "Nest Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:repeat_ball",
+            "display_name": "Repeat Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:timer_ball",
+            "display_name": "Timer Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:luxury_ball",
+            "display_name": "Luxury Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:premier_ball",
+            "display_name": "Premier Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:dusk_ball",
+            "display_name": "Dusk Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:heal_ball",
+            "display_name": "Heal Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:quick_ball",
+            "display_name": "Quick Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:cherish_ball",
+            "display_name": "Cherish Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:park_ball",
+            "display_name": "Park Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:dream_ball",
+            "display_name": "Dream Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:beast_ball",
+            "display_name": "Beast Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:rare_candy",
+            "display_name": "Rare Candy",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:exp_candy_xs",
+            "display_name": "Exp Candy Xs",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:exp_candy_s",
+            "display_name": "Exp Candy S",
+            "quantity": 1
+        }
+    ],
+    "medium": [
+        {
+            "item_name": "cobblemon:link_cable",
+            "display_name": "Link Cable",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:dragon_scale",
+            "display_name": "Dragon Scale",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:kings_rock",
+            "display_name": "Kings Rock",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:metal_coat",
+            "display_name": "Metal Coat",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:upgrade",
+            "display_name": "Upgrade",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:dubious_disc",
+            "display_name": "Dubious Disc",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:deep_sea_scale",
+            "display_name": "Deep Sea Scale",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:deep_sea_tooth",
+            "display_name": "Deep Sea Tooth",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:electirizer",
+            "display_name": "Electirizer",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:magmarizer",
+            "display_name": "Magmarizer",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:oval_stone",
+            "display_name": "Oval Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:protector",
+            "display_name": "Protector",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:reaper_cloth",
+            "display_name": "Reaper Cloth",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:prism_scale",
+            "display_name": "Prism Scale",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:sachet",
+            "display_name": "Sachet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:whipped_dream",
+            "display_name": "Whipped Dream",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:strawberry_sweet",
+            "display_name": "Strawberry Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:love_sweet",
+            "display_name": "Love Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:berry_sweet",
+            "display_name": "Berry Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:clover_sweet",
+            "display_name": "Clover Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:flower_sweet",
+            "display_name": "Flower Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:star_sweet",
+            "display_name": "Star Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:ribbon_sweet",
+            "display_name": "Ribbon Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:chipped_pot",
+            "display_name": "Chipped Pot",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:cracked_pot",
+            "display_name": "Cracked Pot",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:sweet_apple",
+            "display_name": "Sweet Apple",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:tart_apple",
+            "display_name": "Tart Apple",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:galarica_cuff",
+            "display_name": "Galarica Cuff",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:galarica_wreath",
+            "display_name": "Galarica Wreath",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:black_augurite",
+            "display_name": "Black Augurite",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:peat_block",
+            "display_name": "Peat Block",
+            "quantity": 1
+        }
+    ],
+    "hard": [
+        {
+            "item_name": "cobblemon:exp_candy_m",
+            "display_name": "Exp Candy M",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:exp_candy_l",
+            "display_name": "Exp Candy L",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:master_ball",
+            "display_name": "Master Ball",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:exp_candy_xl",
+            "display_name": "Exp Candy Xl",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:link_cable",
+            "display_name": "Link Cable",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:dragon_scale",
+            "display_name": "Dragon Scale",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:kings_rock",
+            "display_name": "Kings Rock",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:metal_coat",
+            "display_name": "Metal Coat",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:upgrade",
+            "display_name": "Upgrade",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:dubious_disc",
+            "display_name": "Dubious Disc",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:deep_sea_scale",
+            "display_name": "Deep Sea Scale",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:deep_sea_tooth",
+            "display_name": "Deep Sea Tooth",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:electirizer",
+            "display_name": "Electirizer",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:magmarizer",
+            "display_name": "Magmarizer",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:oval_stone",
+            "display_name": "Oval Stone",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:protector",
+            "display_name": "Protector",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:reaper_cloth",
+            "display_name": "Reaper Cloth",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:prism_scale",
+            "display_name": "Prism Scale",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:sachet",
+            "display_name": "Sachet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:whipped_dream",
+            "display_name": "Whipped Dream",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:strawberry_sweet",
+            "display_name": "Strawberry Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:love_sweet",
+            "display_name": "Love Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:berry_sweet",
+            "display_name": "Berry Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:clover_sweet",
+            "display_name": "Clover Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:flower_sweet",
+            "display_name": "Flower Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:star_sweet",
+            "display_name": "Star Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:ribbon_sweet",
+            "display_name": "Ribbon Sweet",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:chipped_pot",
+            "display_name": "Chipped Pot",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:cracked_pot",
+            "display_name": "Cracked Pot",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:sweet_apple",
+            "display_name": "Sweet Apple",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:tart_apple",
+            "display_name": "Tart Apple",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:galarica_cuff",
+            "display_name": "Galarica Cuff",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:galarica_wreath",
+            "display_name": "Galarica Wreath",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:black_augurite",
+            "display_name": "Black Augurite",
+            "quantity": 1
+        },
+        {
+            "item_name": "cobblemon:peat_block",
+            "display_name": "Peat Block",
+            "quantity": 1
+        }
+    ]
 }

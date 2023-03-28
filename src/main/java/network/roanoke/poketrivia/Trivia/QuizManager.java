@@ -158,8 +158,13 @@ public class QuizManager {
         return currentQuestion != null;
     }
 
-    public Boolean isRightAnswer(String answer) {
-        return currentQuestion.answers.contains(answer);
+    public Boolean isRightAnswer(String guess) {
+        for (String answer: currentQuestion.answers) {
+            if (answer.equalsIgnoreCase(guess)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void startQuiz(MinecraftServer server) {

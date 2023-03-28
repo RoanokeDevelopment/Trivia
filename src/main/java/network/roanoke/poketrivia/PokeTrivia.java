@@ -40,11 +40,8 @@ public class PokeTrivia implements ModInitializer {
         });
 
         ServerMessageEvents.CHAT_MESSAGE.register((message, sender, params) -> {
-            LOGGER.info("Checking chat message");
             if (quiz.quizInProgress()) {
-                LOGGER.info("Quiz is in progress....");
-                LOGGER.info(message.getContent().getString());
-                if (quiz.isRightAnswer(message.getContent().getString().toLowerCase())) {
+                if (quiz.isRightAnswer(message.getContent().getString())) {
                     LOGGER.info("Chat was correct answer");
                     quiz.processQuizWinner(sender, sender.server);
                 }

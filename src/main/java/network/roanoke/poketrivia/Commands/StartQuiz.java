@@ -13,8 +13,8 @@ public class StartQuiz {
     public StartQuiz() {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(
-                    literal("startquiz")
-                            .requires(Permissions.require("poketrivia.startquiz", 4))
+                    literal("quizstart")
+                            .requires(Permissions.require("poketrivia.quizstart", 4))
                             .executes(this::executeStartQuiz)
             );
         });

@@ -13,8 +13,8 @@ public class ReloadQuiz {
     public ReloadQuiz() {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(
-                    literal("reloadquiz")
-                            .requires(Permissions.require("poketrivia.reloadquiz", 4))
+                    literal("quizreload")
+                            .requires(Permissions.require("poketrivia.quizreload", 4))
                             .executes(this::executeReloadQuiz)
             );
         });

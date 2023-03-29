@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.server.network.ServerPlayerEntity;
-import network.roanoke.poketrivia.Trivia.TriviaQuestion;
+import network.roanoke.poketrivia.Trivia.Question;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,11 +43,17 @@ public class RewardManager {
     }
 
     // give the winner a random reward from the difficulty pool
-    public Reward giveReward(ServerPlayerEntity player, TriviaQuestion question) {
+    public Reward giveReward(ServerPlayerEntity player, Question question) {
         if (rewardPools.containsKey(question.difficulty)) {
             ArrayList<Reward> rewards = rewardPools.get(question.difficulty);
             Reward reward = rewards.get((int) (Math.random() * rewards.size()));
-            player.giveItemStack(reward.itemStack);
+
+            if (player.getInventory().getEmptySlot() == -1) {
+                player.dropItem(reward.itemStack, false);
+            } else {
+                player.giveItemStack(reward.itemStack);
+            }
+
             return reward;
         }
         return null;

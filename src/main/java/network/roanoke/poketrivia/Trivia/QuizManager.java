@@ -18,9 +18,9 @@ import java.util.List;
 
 public class QuizManager {
 
-    private TriviaQuestion currentQuestion = null;
+    private Question currentQuestion = null;
     private Long questionTime = System.currentTimeMillis();
-    private List<TriviaQuestion> questionPool = new ArrayList<>();
+    private List<Question> questionPool = new ArrayList<>();
     private RewardManager rewardManager = null;
 
     public QuizManager() {
@@ -129,7 +129,7 @@ public class QuizManager {
                 }
 
                 // Create the TriviaQuestion object and add it to the list
-                TriviaQuestion question = new TriviaQuestion(questionText, answers, difficulty);
+                Question question = new Question(questionText, answers, difficulty);
                 questionPool.add(question);
             }
         }

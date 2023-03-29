@@ -133,6 +133,7 @@ public class QuizManager {
                 questionPool.add(question);
             }
         }
+        PokeTrivia.LOGGER.info("Loaded " + questionPool.size() + " questions.");
     }
 
     public void loadRewards() {
@@ -149,7 +150,6 @@ public class QuizManager {
             return;
         }
 
-        PokeTrivia.LOGGER.info("Loading the rewards...");
         JsonObject rewardsObj = root.getAsJsonObject();
         rewardManager = new RewardManager(rewardsObj);
     }

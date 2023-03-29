@@ -20,8 +20,6 @@ public class Reward {
 
         if (itemStack == null) {
             PokeTrivia.LOGGER.error("Failed to load reward item: " + itemName);
-        } else {
-            PokeTrivia.LOGGER.info("Loaded reward item: " + itemName);
         }
 
     }

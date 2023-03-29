@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.server.network.ServerPlayerEntity;
+import network.roanoke.poketrivia.PokeTrivia;
 import network.roanoke.poketrivia.Trivia.Question;
 
 import java.util.ArrayList;
@@ -14,6 +15,9 @@ public class RewardManager {
     private HashMap<String, ArrayList<Reward>> rewardPools = new HashMap<>();
 
     public RewardManager(JsonObject rewardsObj) {
+
+        PokeTrivia.LOGGER.info("Loading rewards...");
+
         for (String difficulty : rewardsObj.keySet()) {
             JsonArray questionsArr = rewardsObj.get(difficulty).getAsJsonArray();
 
@@ -40,6 +44,11 @@ public class RewardManager {
                 }
             }
         }
+
+        // output the amount of rewards loaded
+        for (String difficulty : rewardPools.keySet()) {
+            System.out.println("Loaded " + rewardPools.get(difficulty).size() + " rewards for difficulty " + difficulty);
+        }
     }
 
     // give the winner a random reward from the difficulty pool
@@ -48,10 +57,8 @@ public class RewardManager {
             ArrayList<Reward> rewards = rewardPools.get(question.difficulty);
             Reward reward = rewards.get((int) (Math.random() * rewards.size()));
 
-            if (player.getInventory().getEmptySlot() == -1) {
+            if (!player.giveItemStack(reward.itemStack)) {
                 player.dropItem(reward.itemStack, false);
-            } else {
-                player.giveItemStack(reward.itemStack);
             }
 
             return reward;

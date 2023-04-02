@@ -15,7 +15,7 @@ public class Question {
         this.question = question;
         this.answers = answers;
         this.difficulty = difficulty;
-        PokeTrivia.LOGGER.info("Loaded question: " + question);
+        // PokeTrivia.LOGGER.info("Loaded question: " + question);
     }
 
 }

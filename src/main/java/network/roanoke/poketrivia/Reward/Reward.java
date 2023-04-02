@@ -18,10 +18,7 @@ public class Reward {
         this.quantity = quantity;
         this.itemStack = getItemStack(itemName);
 
-        if (itemStack == null) {
-            PokeTrivia.LOGGER.error("Failed to load reward item: " + itemName);
-        }
-
+        PokeTrivia.LOGGER.info("Reward item: " + itemDisplayName + " - itemName : " + itemName + " ItemStack: " + itemStack.toString());
     }
 
     // take the itemName and return an ItemStack

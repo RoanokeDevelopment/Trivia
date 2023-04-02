@@ -57,8 +57,8 @@ public class RewardManager {
             ArrayList<Reward> rewards = rewardPools.get(question.difficulty);
             Reward reward = rewards.get((int) (Math.random() * rewards.size()));
 
-            if (!player.giveItemStack(reward.itemStack)) {
-                player.dropItem(reward.itemStack, false);
+            if (!player.giveItemStack(reward.itemStack.copy())) {
+                player.dropItem(reward.itemStack.copy(), false);
             }
 
             return reward;

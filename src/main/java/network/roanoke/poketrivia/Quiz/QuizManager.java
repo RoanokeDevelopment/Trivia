@@ -1,4 +1,4 @@
-package network.roanoke.poketrivia.Trivia;
+package network.roanoke.poketrivia.Quiz;
 
 import com.google.gson.*;
 import net.fabricmc.loader.api.FabricLoader;
@@ -7,7 +7,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import network.roanoke.poketrivia.PokeTrivia;
+import network.roanoke.poketrivia.Trivia;
 import network.roanoke.poketrivia.Reward.Reward;
 import network.roanoke.poketrivia.Reward.RewardManager;
 
@@ -28,7 +28,7 @@ public class QuizManager {
             ensureFilesExist();
         } catch (IOException e) {
             e.printStackTrace();
-            PokeTrivia.LOGGER.error("Failed to copy built in default files to Config/Trivia");
+            Trivia.LOGGER.error("Failed to copy built in default files to Config/Trivia");
         }
         loadQuestions();
         loadRewards();
@@ -53,7 +53,7 @@ public class QuizManager {
         if (!questionsFile.exists()) {
             questionsFile.createNewFile();
             // create the file
-            InputStream in = PokeTrivia.class.getResourceAsStream("/questions.json");
+            InputStream in = Trivia.class.getResourceAsStream("/questions.json");
 
             // Create a FileOutputStream to write the file to the directory
             OutputStream out = new FileOutputStream(questionsFile);
@@ -72,7 +72,7 @@ public class QuizManager {
         if (!rewardsFile.exists()) {
             rewardsFile.createNewFile();
 
-            InputStream in = PokeTrivia.class.getResourceAsStream("/rewards.json");
+            InputStream in = Trivia.class.getResourceAsStream("/rewards.json");
 
             // Create a FileOutputStream to write the file to the directory
             OutputStream out = new FileOutputStream(rewardsFile);
@@ -109,7 +109,7 @@ public class QuizManager {
 
         // Get the "questions" object
         JsonObject questionsObj = root.getAsJsonObject();
-        PokeTrivia.LOGGER.info("Loading the questions...");
+        Trivia.LOGGER.info("Loading the questions...");
         // Loop over the difficulty levels
         for (String difficulty : questionsObj.keySet()) {
             JsonArray questionsArr = questionsObj.get(difficulty).getAsJsonArray();
@@ -133,7 +133,7 @@ public class QuizManager {
                 questionPool.add(question);
             }
         }
-        PokeTrivia.LOGGER.info("Loaded " + questionPool.size() + " questions.");
+        Trivia.LOGGER.info("Loaded " + questionPool.size() + " questions.");
     }
 
     public void loadRewards() {
@@ -185,7 +185,7 @@ public class QuizManager {
                         .append(Text.literal(((System.currentTimeMillis() - questionTime) / 1000) + " seconds!").formatted(Formatting.GOLD)));
 
         if (reward == null) {
-            PokeTrivia.LOGGER.error("Failed to get reward for " + player.getName() + " for question " + currentQuestion.question);
+            Trivia.LOGGER.error("Failed to get reward for " + player.getName() + " for question " + currentQuestion.question);
         } else {
             toSend.append(Text.literal(" They won a " + reward.itemDisplayName + "!").formatted(Formatting.WHITE));
         }

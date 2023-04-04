@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "id": "poketrivia",
+  "id": "trivia",
   "version": "${version}",
-  "name": "PokeTrivia",
+  "name": "Trivia",
   "description": "",
   "authors": [],
   "contact": {
-    "repo": "https://github.com/xander/PokeTrivia"
+    "repo": "https://github.com/RoanokeNetwork/Trivia"
   },
   "license": "All-Rights-Reserved",
   "environment": "server",
   "entrypoints": {
     "main": [
-      "network.roanoke.poketrivia.PokeTrivia"
+      "network.roanoke.poketrivia.Trivia"
     ]
   },
   "depends": {

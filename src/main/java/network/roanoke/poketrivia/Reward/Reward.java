@@ -3,7 +3,7 @@ package network.roanoke.poketrivia.Reward;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import network.roanoke.poketrivia.PokeTrivia;
+import network.roanoke.poketrivia.Trivia;
 
 public class Reward {
 
@@ -18,7 +18,7 @@ public class Reward {
         this.quantity = quantity;
         this.itemStack = getItemStack(itemName);
 
-        PokeTrivia.LOGGER.info("Reward item: " + itemDisplayName + " - itemName : " + itemName + " ItemStack: " + itemStack.toString());
+        Trivia.LOGGER.info("Reward item: " + itemDisplayName + " - itemName : " + itemName + " ItemStack: " + itemStack.toString());
     }
 
     // take the itemName and return an ItemStack

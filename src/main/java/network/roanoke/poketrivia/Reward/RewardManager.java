@@ -4,8 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.server.network.ServerPlayerEntity;
-import network.roanoke.poketrivia.PokeTrivia;
-import network.roanoke.poketrivia.Trivia.Question;
+import network.roanoke.poketrivia.Trivia;
+import network.roanoke.poketrivia.Quiz.Question;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class RewardManager {
 
     public RewardManager(JsonObject rewardsObj) {
 
-        PokeTrivia.LOGGER.info("Loading rewards...");
+        Trivia.LOGGER.info("Loading rewards...");
 
         for (String difficulty : rewardsObj.keySet()) {
             JsonArray questionsArr = rewardsObj.get(difficulty).getAsJsonArray();

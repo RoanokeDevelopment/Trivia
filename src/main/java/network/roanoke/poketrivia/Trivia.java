@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import network.roanoke.poketrivia.Commands.QuizCommands;
 import network.roanoke.poketrivia.Commands.QuizInterval;
 import network.roanoke.poketrivia.Commands.ReloadQuiz;
 import network.roanoke.poketrivia.Commands.StartQuiz;
@@ -19,32 +20,27 @@ public class Trivia implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("Trivia");
     public static Trivia instance;
     public QuizManager quiz = new QuizManager();
+    public Config config = new Config();
     public Integer quizIntervalCounter = 0;
     public Integer quizTimeOutCounter = 0;
-    public Integer quizTimeOut = 120 * 20;
-    
-    public Integer quizInterval = 600 * 20;
 
     @Override
     public void onInitialize() {
 
-        LOGGER.info("Starting up PokeTrivia");
         instance = this;
 
-        new StartQuiz();
-        new ReloadQuiz();
-        new QuizInterval();
+        new QuizCommands();
 
         ServerTickEvents.START_SERVER_TICK.register(server -> {
             if (!quiz.quizInProgress() && (server.getPlayerManager().getPlayerList().size() > 0)) {
-                if (quizIntervalCounter >= quizInterval) {
+                if (quizIntervalCounter >= config.getQuizInterval()) {
                     quizIntervalCounter = 0;
                     quiz.startQuiz(server);
                 } else {
                     quizIntervalCounter++;
                 }
             } else {
-                if (quizTimeOutCounter >= quizTimeOut) {
+                if (quizTimeOutCounter >= config.getQuizTimeOut()) {
                     quizTimeOutCounter = 0;
                     quizIntervalCounter = 0;
                     server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(Text.literal("No one answered the quiz in time!").formatted(Formatting.GOLD)));

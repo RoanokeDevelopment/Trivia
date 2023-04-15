@@ -1,15 +1,12 @@
-package network.roanoke.poketrivia;
+package network.roanoke.trivia;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import network.roanoke.poketrivia.Commands.QuizCommands;
-import network.roanoke.poketrivia.Commands.QuizInterval;
-import network.roanoke.poketrivia.Commands.ReloadQuiz;
-import network.roanoke.poketrivia.Commands.StartQuiz;
-import network.roanoke.poketrivia.Quiz.QuizManager;
+import network.roanoke.trivia.Commands.QuizCommands;
+import network.roanoke.trivia.Quiz.QuizManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

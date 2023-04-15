@@ -1,13 +1,14 @@
-package network.roanoke.poketrivia.Commands;
+package network.roanoke.trivia.Commands;
 
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.server.command.ServerCommandSource;
-import network.roanoke.poketrivia.Config;
-import network.roanoke.poketrivia.Quiz.QuizManager;
-import network.roanoke.poketrivia.Trivia;
+import net.minecraft.text.Text;
+import network.roanoke.trivia.Config;
+import network.roanoke.trivia.Quiz.QuizManager;
+import network.roanoke.trivia.Trivia;
 
 import static net.minecraft.server.command.CommandManager.argument;
 import static net.minecraft.server.command.CommandManager.literal;
@@ -40,13 +41,13 @@ public class QuizCommands {
 
     private int executeQuizTimeout(CommandContext<ServerCommandSource> ctx) {
         Trivia.getInstance().config.setQuizTimeOut(ctx.getArgument("timeoutSeconds", Integer.class) * 20);
-        Trivia.LOGGER.info("Updated Quiz Timeout to " + ctx.getArgument("timeoutSeconds", Integer.class) + " seconds.");
+        ctx.getSource().sendMessage(Text.literal("Updated Quiz Timeout to " + ctx.getArgument("timeoutSeconds", Integer.class) + " seconds."));
         return 1;
     }
 
     private int executeQuizInterval(CommandContext<ServerCommandSource> ctx) {
         Trivia.getInstance().config.setQuizInterval(ctx.getArgument("intervalSeconds", Integer.class) * 20);
-        Trivia.LOGGER.info("Updated Quiz Interval to " + ctx.getArgument("intervalSeconds", Integer.class) + " seconds.");
+        ctx.getSource().sendMessage(Text.literal("Updated Quiz Interval to " + ctx.getArgument("intervalSeconds", Integer.class) + " seconds."));
         return 1;
     }
 

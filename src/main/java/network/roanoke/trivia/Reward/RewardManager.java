@@ -1,11 +1,11 @@
-package network.roanoke.poketrivia.Reward;
+package network.roanoke.trivia.Reward;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.server.network.ServerPlayerEntity;
-import network.roanoke.poketrivia.Trivia;
-import network.roanoke.poketrivia.Quiz.Question;
+import network.roanoke.trivia.Trivia;
+import network.roanoke.trivia.Quiz.Question;
 
 import java.util.ArrayList;
 import java.util.HashMap;

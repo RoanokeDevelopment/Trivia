@@ -1,4 +1,4 @@
-package network.roanoke.poketrivia;
+package network.roanoke.trivia;
 
 import net.fabricmc.loader.api.FabricLoader;
 
@@ -7,7 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Properties;
 
 public class Config {
@@ -33,7 +32,7 @@ public class Config {
     }
 
     public int getQuizTimeOut() {
-        return Integer.parseInt(properties.getProperty("quizTimeOut"));
+        return Integer.parseInt(properties.getProperty("quizTimeOut")) * 20;
     }
 
     public void setQuizTimeOut(int timeout) {
@@ -42,7 +41,7 @@ public class Config {
     }
 
     public int getQuizInterval() {
-        return Integer.parseInt(properties.getProperty("quizInterval"));
+        return Integer.parseInt(properties.getProperty("quizInterval")) * 20;
     }
 
     public void setQuizInterval(int interval) {
@@ -52,6 +51,9 @@ public class Config {
 
     public void save() {
         try {
+            if (!CONFIG_FILE_PATH.toFile().exists()) {
+                Files.createFile(CONFIG_FILE_PATH);
+            }
             FileOutputStream file = new FileOutputStream(CONFIG_FILE_PATH.toFile());
             properties.store(file, null);
             file.close();

@@ -12,7 +12,7 @@
   "environment": "server",
   "entrypoints": {
     "main": [
-      "network.roanoke.poketrivia.Trivia"
+      "network.roanoke.trivia.Trivia"
     ]
   },
   "depends": {

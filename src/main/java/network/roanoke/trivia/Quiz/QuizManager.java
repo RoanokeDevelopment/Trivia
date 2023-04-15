@@ -1,4 +1,4 @@
-package network.roanoke.poketrivia.Quiz;
+package network.roanoke.trivia.Quiz;
 
 import com.google.gson.*;
 import net.fabricmc.loader.api.FabricLoader;
@@ -7,9 +7,9 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import network.roanoke.poketrivia.Trivia;
-import network.roanoke.poketrivia.Reward.Reward;
-import network.roanoke.poketrivia.Reward.RewardManager;
+import network.roanoke.trivia.Trivia;
+import network.roanoke.trivia.Reward.Reward;
+import network.roanoke.trivia.Reward.RewardManager;
 
 import java.io.*;
 import java.nio.file.Path;

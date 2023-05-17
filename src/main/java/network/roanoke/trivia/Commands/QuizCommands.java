@@ -17,7 +17,7 @@ public class QuizCommands {
     public QuizCommands() {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(
-                    literal("quiz")
+                    literal("trivia")
                             .then(
                                     literal("interval")
                                             .requires(Permissions.require("trivia.interval", 4))
@@ -40,13 +40,13 @@ public class QuizCommands {
     }
 
     private int executeQuizTimeout(CommandContext<ServerCommandSource> ctx) {
-        Trivia.getInstance().config.setQuizTimeOut(ctx.getArgument("timeoutSeconds", Integer.class) * 20);
+        Trivia.getInstance().config.setQuizTimeOut(ctx.getArgument("timeoutSeconds", Integer.class));
         ctx.getSource().sendMessage(Text.literal("Updated Quiz Timeout to " + ctx.getArgument("timeoutSeconds", Integer.class) + " seconds."));
         return 1;
     }
 
     private int executeQuizInterval(CommandContext<ServerCommandSource> ctx) {
-        Trivia.getInstance().config.setQuizInterval(ctx.getArgument("intervalSeconds", Integer.class) * 20);
+        Trivia.getInstance().config.setQuizInterval(ctx.getArgument("intervalSeconds", Integer.class));
         ctx.getSource().sendMessage(Text.literal("Updated Quiz Interval to " + ctx.getArgument("intervalSeconds", Integer.class) + " seconds."));
         return 1;
     }

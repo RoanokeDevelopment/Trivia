@@ -3,8 +3,8 @@
   "id": "trivia",
   "version": "${version}",
   "name": "Trivia",
-  "description": "",
-  "authors": [],
+  "description": "A Trivia mod for Fabric 1.19.2, configurable questions are asked in chats, the first person to answer is given an item as a reward (also configurable)",
+  "authors": ["complacentdev"],
   "contact": {
     "repo": "https://github.com/RoanokeNetwork/Trivia"
   },

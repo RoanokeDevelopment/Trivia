@@ -41,7 +41,7 @@ public class Trivia implements ModInitializer {
                     quizTimeOutCounter = 0;
                     quizIntervalCounter = 0;
                     server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(Text.literal("No one answered the quiz in time!").formatted(Formatting.GOLD)));
-                    quiz.startQuiz(server);
+                    quiz.timeOutQuiz(); // move timeout message to this function later
                 } else {
                     quizTimeOutCounter++;
                 }
@@ -52,7 +52,7 @@ public class Trivia implements ModInitializer {
         ServerMessageEvents.CHAT_MESSAGE.register((message, sender, params) -> {
             if (quiz.quizInProgress()) {
                 if (quiz.isRightAnswer(message.getContent().getString())) {
-                    LOGGER.info("Chat was correct answer");
+                    LOGGER.info("Trivia question was answered correctly.");
                     quiz.processQuizWinner(sender, sender.server);}
             }
         });

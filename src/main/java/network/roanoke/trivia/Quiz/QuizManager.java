@@ -194,4 +194,8 @@ public class QuizManager {
         currentQuestion = null;
     }
 
+    public void timeOutQuiz() {
+        this.currentQuestion = null;
+    }
+
 }

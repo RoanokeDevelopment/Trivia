@@ -14,15 +14,16 @@ If a player's inventory is full, or inserting the item goes wrong for some other
 
 <h3>Upcoming Features</h3>
 
-<li><b>Configuration</b> - quiz interval, timeout, and chat formatting will be made configurable</li>
+<li><b>Configuration</b> - chat formatting will be made configurable /w MiniMessage & Placeholder support</li>
 <li><b>Probability</b> - probabilities will be configurable both on pools & individual questions/rewards</li>
 <li><b>Cobblemon Integration</b> - use Cobblemon API to auto generate questions like "What type is this Pokemon", "What's the ability from this description" etc</li>
 <li><b>Command Rewards</b> - with player name placeholders, so crates/pokemon/claim blocks can be given as rewards</li>
 
 <h2>Commands</h2>
-<li><b>/quizreload [trivia.quizreload]</b> - reload questions & rewards files</li>
-<li><b>/quizinterval (seconds) [trivia.quizinterval]</b> - set the amount of time that should pass between questions</li>
-<li><b>/quizstart [trivia.quizstart]</b> - force start a quiz, useful for testing questions/rewards</li>
+<li><b>/trivia reload [trivia.reload]</b> - reload questions & rewards files</li>
+<li><b>/trivia interval (seconds) [trivia.interval]</b> - set the amount of time that should pass between questions</li>
+<li><b>/trivia timeout (seconds) [trivia.timeout]</b> - after this many seconds, the question is "timed out" and not answerable</li>
+<li><b>/trivia start [trivia.startt]</b> - force start a quiz, useful for testing questions/rewards</li>
 
 <h2>Questions & Rewards Files</h2>
 

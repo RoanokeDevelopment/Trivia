@@ -4,11 +4,13 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import network.roanoke.trivia.Config;
 import network.roanoke.trivia.Quiz.QuizManager;
 import network.roanoke.trivia.Trivia;
+import network.roanoke.trivia.Utils.Messages;
 
 import static net.minecraft.server.command.CommandManager.argument;
 import static net.minecraft.server.command.CommandManager.literal;
@@ -68,6 +70,7 @@ public class QuizCommands {
         }
         Trivia.getInstance().quiz = new QuizManager();
         Trivia.getInstance().config = new Config();
+        Trivia.messages = new Messages(FabricLoader.getInstance().getConfigDir().resolve("Trivia/messages.json"));
         return 1;
     }
 

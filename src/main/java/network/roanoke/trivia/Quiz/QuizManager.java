@@ -10,11 +10,14 @@ import net.minecraft.util.Formatting;
 import network.roanoke.trivia.Trivia;
 import network.roanoke.trivia.Reward.Reward;
 import network.roanoke.trivia.Reward.RewardManager;
+import network.roanoke.trivia.Utils.Messages;
 
 import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class QuizManager {
 
@@ -170,31 +173,38 @@ public class QuizManager {
     public void startQuiz(MinecraftServer server) {
         // Get a random question from the pool
         currentQuestion = questionPool.get((int) (Math.random() * questionPool.size()));
-        // Send the question to all players
-        MutableText toSend = Text.literal(currentQuestion.question).formatted(Formatting.GOLD);
-        server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(toSend));
+
+        server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(
+                Trivia.messages.getDisplayText(
+                        Trivia.messages.getMessage("trivia.ask_question",
+                                Map.of("{question}", currentQuestion.question))
+                )
+        ));
+
         // Set the time the question was asked
         questionTime = System.currentTimeMillis();
     }
 
     public void processQuizWinner(ServerPlayerEntity player, MinecraftServer server) {
         Reward reward = rewardManager.giveReward(player, currentQuestion);
+        Map<String, String> placeholders = new HashMap<>();
+        placeholders.put("{player}", player.getGameProfile().getName());
+        placeholders.put("{reward}", reward.itemDisplayName == null ? "REWARD_ERROR" : reward.itemDisplayName);
+        placeholders.put("{time}", String.valueOf(((System.currentTimeMillis() - questionTime) / 1000)));
 
-        MutableText toSend = player.getDisplayName().copy()
-                .append(Text.literal(" got the answer right in ")
-                        .append(Text.literal(((System.currentTimeMillis() - questionTime) / 1000) + " seconds!").formatted(Formatting.GOLD)));
+        server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(
+                Trivia.messages.getDisplayText(
+                        Trivia.messages.getMessage("trivia.correct_answer", placeholders)
+                )
+        ));
 
-        if (reward == null) {
-            Trivia.LOGGER.error("Failed to get reward for " + player.getName() + " for question " + currentQuestion.question);
-        } else {
-            toSend.append(Text.literal(" They won a " + reward.itemDisplayName + "!").formatted(Formatting.WHITE));
-        }
-
-        server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(toSend));
         currentQuestion = null;
     }
 
-    public void timeOutQuiz() {
+    public void timeOutQuiz(MinecraftServer server) {
+        server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(
+                Trivia.messages.getDisplayText(Trivia.messages.getMessage("trivia.no_answer")))
+        );
         this.currentQuestion = null;
     }
 

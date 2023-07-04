@@ -1,0 +1,6 @@
+{
+  "trivia.prefix": "<white>[<gold>Trivia<white>]<reset>",
+  "trivia.ask_question": "{prefix} {question}",
+  "trivia.no_answer": "{prefix} No one answered the question in time!",
+  "trivia.correct_answer": "{prefix} <blue>{player} <reset>got the answer right in <blue>{time} seconds!<reset> They won a <gold>{reward}!"
+}

@@ -1,8 +1,8 @@
 package network.roanoke.trivia.Reward;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import network.roanoke.trivia.Trivia;
 
 public class Reward {
@@ -23,7 +23,7 @@ public class Reward {
 
     // take the itemName and return an ItemStack
     public ItemStack getItemStack(String itemName) {
-        return new ItemStack(Registry.ITEM.get(new Identifier(itemName)), quantity);
+        return new ItemStack(Registries.ITEM.get(new Identifier(itemName)), quantity);
     }
 
 }

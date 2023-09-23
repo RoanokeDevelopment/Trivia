@@ -24,7 +24,7 @@ public class Messages {
                 // Create all directories in the path if they don't exist yet.
                 Files.createDirectories(filePath.getParent());
 
-                try (InputStream is = getClass().getResourceAsStream("/messages.json");
+                try (InputStream is = getClass().getResourceAsStream("/trivia-messages.json");
                      OutputStream os = new FileOutputStream(filePath.toFile())) {
                     IOUtils.copy(is, os);
                 } catch (FileNotFoundException e) {

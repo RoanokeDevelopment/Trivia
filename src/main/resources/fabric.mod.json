@@ -3,7 +3,7 @@
   "id": "trivia",
   "version": "${version}",
   "name": "Trivia",
-  "description": "A Trivia mod for Fabric 1.19.2, configurable questions are asked in chats, the first person to answer is given an item as a reward (also configurable)",
+  "description": "A Trivia mod for Fabric 1.20.1, configurable questions are asked in chats, the first person to answer is given an item as a reward (also configurable)",
   "authors": ["complacentdev"],
   "contact": {
     "repo": "https://github.com/RoanokeNetwork/Trivia"
@@ -18,6 +18,6 @@
   "depends": {
     "fabricloader": ">=0.14.10",
     "fabric": "*",
-    "minecraft": "1.19.2"
+    "minecraft": "1.20.1"
   }
 }

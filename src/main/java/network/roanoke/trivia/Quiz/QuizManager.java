@@ -117,7 +117,7 @@ public class QuizManager {
         for (String difficulty : questionsObj.keySet()) {
             JsonArray questionsArr = questionsObj.get(difficulty).getAsJsonArray();
 
-                // Loop over the questions in the difficulty level
+            // Loop over the questions in the difficulty level
             for (JsonElement questionElem : questionsArr) {
                 JsonObject questionObj = questionElem.getAsJsonObject();
 
@@ -174,6 +174,7 @@ public class QuizManager {
         // Get a random question from the pool
         currentQuestion = questionPool.get((int) (Math.random() * questionPool.size()));
 
+        // Announce the question to all players
         server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(
                 Trivia.messages.getDisplayText(
                         Trivia.messages.getMessage("trivia.ask_question",
@@ -181,24 +182,36 @@ public class QuizManager {
                 )
         ));
 
+        // Reset the timeout counter since a new question has started
+        Trivia.getInstance().quizTimeOutCounter = 0;
+
         // Set the time the question was asked
         questionTime = System.currentTimeMillis();
     }
 
     public void processQuizWinner(ServerPlayerEntity player, MinecraftServer server) {
+        // Give the reward
         Reward reward = rewardManager.giveReward(player, currentQuestion);
+
+        // Prepare the announcement message
         Map<String, String> placeholders = new HashMap<>();
         placeholders.put("{player}", player.getGameProfile().getName());
         placeholders.put("{reward}", reward.itemDisplayName == null ? "REWARD_ERROR" : reward.itemDisplayName);
         placeholders.put("{time}", String.valueOf(((System.currentTimeMillis() - questionTime) / 1000)));
 
+        // Announce the winner to all players
         server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(
                 Trivia.messages.getDisplayText(
                         Trivia.messages.getMessage("trivia.correct_answer", placeholders)
                 )
         ));
 
+        // Reset the current question
         currentQuestion = null;
+
+        // Reset both counters since the quiz was won
+        Trivia.getInstance().quizIntervalCounter = 0;
+        Trivia.getInstance().quizTimeOutCounter = 0;
     }
 
     public void timeOutQuiz(MinecraftServer server) {

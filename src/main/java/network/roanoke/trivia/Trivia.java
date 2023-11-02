@@ -7,8 +7,7 @@ import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.kyori.adventure.platform.fabric.FabricServerAudiences;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.minecraft.server.network.ServerPlayerEntity;
 import network.roanoke.trivia.Commands.QuizCommands;
 import network.roanoke.trivia.Quiz.QuizManager;
 import network.roanoke.trivia.Utils.Messages;
@@ -32,48 +31,45 @@ public class Trivia implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
         instance = this;
 
         new QuizCommands();
 
-        ServerLifecycleEvents.SERVER_STARTED.register(server -> {
-            adventure = FabricServerAudiences.of(server);
-        });
+        ServerLifecycleEvents.SERVER_STARTED.register(server -> adventure = FabricServerAudiences.of(server));
 
         ServerTickEvents.START_SERVER_TICK.register(server -> {
-            if (!quiz.quizInProgress() && (server.getPlayerManager().getPlayerList().size() > 0)) {
+            if (!quiz.quizInProgress() && server.getPlayerManager().getPlayerList().size() > 0) {
                 if (quizIntervalCounter >= config.getQuizInterval()) {
                     quizIntervalCounter = 0;
                     quiz.startQuiz(server);
                 } else {
                     quizIntervalCounter++;
                 }
-            } else {
+            } else if (quiz.quizInProgress()) {
                 if (quizTimeOutCounter >= config.getQuizTimeOut()) {
                     quizTimeOutCounter = 0;
-                    quizIntervalCounter = 0;
-                    quiz.timeOutQuiz(server); // move timeout message to this function later
+                    quiz.timeOutQuiz(server);
                 } else {
                     quizTimeOutCounter++;
                 }
-
             }
         });
 
         ServerMessageEvents.CHAT_MESSAGE.register((message, sender, params) -> {
             if (quiz.quizInProgress()) {
-                if (quiz.isRightAnswer(message.getContent().getString())) {
-                    LOGGER.info("Trivia question was answered correctly.");
-                    quiz.processQuizWinner(sender, sender.server);}
+                String messageContent = message.getContent().getString();
+                if (quiz.isRightAnswer(messageContent)) {
+                    LOGGER.info("Trivia question was answered correctly by " + sender.getName().getString());
+                    quiz.processQuizWinner(sender, sender.server);
+                    // Reset both the interval and timeout counters when a correct answer is given
+                    quizIntervalCounter = 0;
+                    quizTimeOutCounter = 0;
+                }
             }
         });
-
-
     }
 
     public static Trivia getInstance() {
         return instance;
     }
-
 }

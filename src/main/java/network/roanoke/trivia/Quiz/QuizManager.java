@@ -117,7 +117,7 @@ public class QuizManager {
         for (String difficulty : questionsObj.keySet()) {
             JsonArray questionsArr = questionsObj.get(difficulty).getAsJsonArray();
 
-                // Loop over the questions in the difficulty level
+            // Loop over the questions in the difficulty level
             for (JsonElement questionElem : questionsArr) {
                 JsonObject questionObj = questionElem.getAsJsonObject();
 
@@ -191,6 +191,7 @@ public class QuizManager {
         placeholders.put("{player}", player.getGameProfile().getName());
         placeholders.put("{reward}", reward.itemDisplayName == null ? "REWARD_ERROR" : reward.itemDisplayName);
         placeholders.put("{time}", String.valueOf(((System.currentTimeMillis() - questionTime) / 1000)));
+        placeholders.put("{answer}", String.join(", ", currentQuestion.answers));
 
         server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(
                 Trivia.messages.getDisplayText(
@@ -202,8 +203,11 @@ public class QuizManager {
     }
 
     public void timeOutQuiz(MinecraftServer server) {
+        Map<String, String> placeholders = new HashMap<>();
+        placeholders.put("{answer}", String.join(", ", currentQuestion.answers));
+
         server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(
-                Trivia.messages.getDisplayText(Trivia.messages.getMessage("trivia.no_answer")))
+                Trivia.messages.getDisplayText(Trivia.messages.getMessage("trivia.no_answer", placeholders)))
         );
         this.currentQuestion = null;
     }

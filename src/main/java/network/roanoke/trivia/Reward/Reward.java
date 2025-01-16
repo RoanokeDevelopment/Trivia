@@ -23,7 +23,7 @@ public class Reward {
 
     // take the itemName and return an ItemStack
     public ItemStack getItemStack(String itemName) {
-        return new ItemStack(Registries.ITEM.get(new Identifier(itemName)), quantity);
+        return new ItemStack(Registries.ITEM.get(Identifier.tryParse(itemName)), quantity);
     }
 
 }

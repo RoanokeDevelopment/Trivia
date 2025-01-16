@@ -1,16 +1,12 @@
-package network.roanoke.trivia.Quiz;
+package dev.roanoke.trivia.Quiz;
 
 import com.google.gson.*;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import network.roanoke.trivia.Trivia;
-import network.roanoke.trivia.Reward.Reward;
-import network.roanoke.trivia.Reward.RewardManager;
-import network.roanoke.trivia.Utils.Messages;
+import dev.roanoke.trivia.Trivia;
+import dev.roanoke.trivia.Reward.Reward;
+import dev.roanoke.trivia.Reward.RewardManager;
 
 import java.io.*;
 import java.nio.file.Path;

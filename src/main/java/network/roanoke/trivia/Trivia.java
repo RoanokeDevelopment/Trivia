@@ -65,7 +65,8 @@ public class Trivia implements ModInitializer {
             if (quiz.quizInProgress()) {
                 if (quiz.isRightAnswer(message.getContent().getString())) {
                     LOGGER.info("Trivia question was answered correctly.");
-                    quiz.processQuizWinner(sender, sender.server);}
+                    quiz.processQuizWinner(sender, sender.server, message.getContent().getString());
+                }
             }
         });
 

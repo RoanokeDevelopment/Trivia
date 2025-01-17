@@ -185,13 +185,13 @@ public class QuizManager {
         questionTime = System.currentTimeMillis();
     }
 
-    public void processQuizWinner(ServerPlayerEntity player, MinecraftServer server) {
+    public void processQuizWinner(ServerPlayerEntity player, MinecraftServer server, String guess) {
         Reward reward = rewardManager.giveReward(player, currentQuestion);
         Map<String, String> placeholders = new HashMap<>();
         placeholders.put("{player}", player.getGameProfile().getName());
         placeholders.put("{reward}", reward.itemDisplayName == null ? "REWARD_ERROR" : reward.itemDisplayName);
         placeholders.put("{time}", String.valueOf(((System.currentTimeMillis() - questionTime) / 1000)));
-        placeholders.put("{answer}", String.join(", ", currentQuestion.answers));
+        placeholders.put("{answer}", guess);
 
         server.getPlayerManager().getPlayerList().forEach(serverPlayer -> serverPlayer.sendMessage(
                 Trivia.messages.getDisplayText(

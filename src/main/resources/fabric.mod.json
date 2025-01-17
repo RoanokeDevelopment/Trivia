@@ -3,8 +3,8 @@
   "id": "trivia",
   "version": "${version}",
   "name": "Trivia",
-  "description": "A Trivia mod for Fabric 1.20.1, configurable questions are asked in chats, the first person to answer is given an item as a reward (also configurable)",
-  "authors": ["complacentdev"],
+  "description": "A Trivia mod for Fabric 1.20.1+, configurable questions are asked in chats, the first person to answer is given an item as a reward (also configurable)",
+  "authors": ["complacentdev", "Nisex"],
   "contact": {
     "repo": "https://github.com/RoanokeNetwork/Trivia"
   },
@@ -12,7 +12,7 @@
   "environment": "server",
   "entrypoints": {
     "main": [
-      "network.roanoke.trivia.Trivia"
+      "dev.roanoke.trivia.Trivia"
     ]
   },
   "depends": {

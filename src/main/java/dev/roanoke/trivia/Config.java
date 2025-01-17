@@ -1,4 +1,4 @@
-package network.roanoke.trivia;
+package dev.roanoke.trivia;
 
 import net.fabricmc.loader.api.FabricLoader;
 

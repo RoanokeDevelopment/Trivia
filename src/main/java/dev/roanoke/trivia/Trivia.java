@@ -1,4 +1,4 @@
-package network.roanoke.trivia;
+package dev.roanoke.trivia;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -7,11 +7,9 @@ import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.kyori.adventure.platform.fabric.FabricServerAudiences;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import network.roanoke.trivia.Commands.QuizCommands;
-import network.roanoke.trivia.Quiz.QuizManager;
-import network.roanoke.trivia.Utils.Messages;
+import dev.roanoke.trivia.Commands.QuizCommands;
+import dev.roanoke.trivia.Quiz.QuizManager;
+import dev.roanoke.trivia.Utils.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

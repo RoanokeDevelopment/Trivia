@@ -1,9 +1,9 @@
-package network.roanoke.trivia.Reward;
+package dev.roanoke.trivia.Reward;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import network.roanoke.trivia.Trivia;
+import dev.roanoke.trivia.Trivia;
 
 public class Reward {
 

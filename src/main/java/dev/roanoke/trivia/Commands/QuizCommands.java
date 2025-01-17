@@ -1,4 +1,4 @@
-package network.roanoke.trivia.Commands;
+package dev.roanoke.trivia.Commands;
 
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -7,10 +7,10 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
-import network.roanoke.trivia.Config;
-import network.roanoke.trivia.Quiz.QuizManager;
-import network.roanoke.trivia.Trivia;
-import network.roanoke.trivia.Utils.Messages;
+import dev.roanoke.trivia.Config;
+import dev.roanoke.trivia.Quiz.QuizManager;
+import dev.roanoke.trivia.Trivia;
+import dev.roanoke.trivia.Utils.Messages;
 
 import static net.minecraft.server.command.CommandManager.argument;
 import static net.minecraft.server.command.CommandManager.literal;

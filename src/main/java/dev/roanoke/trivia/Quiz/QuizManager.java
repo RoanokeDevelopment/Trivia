@@ -199,6 +199,9 @@ public class QuizManager {
     }
 
     public void timeOutQuiz(MinecraftServer server) {
+        if (currentQuestion == null) {
+            return;
+        }
         Map<String, String> placeholders = new HashMap<>();
         placeholders.put("{answer}", String.join(", ", currentQuestion.answers));
 
